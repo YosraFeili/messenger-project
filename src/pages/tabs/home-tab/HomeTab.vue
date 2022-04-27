@@ -76,7 +76,7 @@
 
 <script>
 import ShareFile from 'pages/tabs/home-tab/ShareFile'
-import { conversation } from 'app/src'
+import { chatList } from 'app/src'
 export default {
   name: 'HomeTab',
   components: { ShareFile },
@@ -84,7 +84,7 @@ export default {
   data () {
     return {
       openShareFile: false,
-      groups: (conversation.group)
+      groups: (chatList.group)
     }
   },
   methods: {

@@ -1,6 +1,6 @@
 <template>
 <div class="">
-  <div class="cursor-pointer" v-for="contact in contacts" :key="contact.id" @click="showChatPage(contact)">
+  <div class="cursor-pointer hover:bg-blue-100" v-for="contact in contacts" :key="contact.id" @click="showChatPage(contact)">
       <q-menu touch-position context-menu>
 
         <q-list class="items-center" dense style="min-width: 146px">
@@ -19,7 +19,7 @@
 
       </q-menu>
 
-    <q-list class="border-b-2 border-gray-100" padding>
+    <q-list class="border-b-2 border-gray-100" >
       <q-item>
 
         <q-item-section side top>

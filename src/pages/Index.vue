@@ -3,7 +3,7 @@
     <div class="bg flex-1 shadow-md">
       <ChatPageUser />
     </div>
-    <div class="bg w-1/3 shadow-md">
+    <div class="bg w-1/3">
       <div>
         <InboxHeader/>
       </div>

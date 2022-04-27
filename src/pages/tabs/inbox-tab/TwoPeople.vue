@@ -1,7 +1,7 @@
 <template>
 <div class="">
-  <div class="cursor-pointer" v-for="people in twoPeople" :key="people.id" @click="showChatPage(people)">
-    <q-list class="border-b-2 border-gray-100" padding>
+  <div class="cursor-pointer hover:bg-blue-100" v-for="people in twoPeople" :key="people.id" @click="showChatPage(people)">
+    <q-list class="border-b-2 border-gray-100">
       <q-item>
         <q-item-section side top>
           <div class="text mb-1">{{ people.lastSeen }}</div>
