@@ -26,13 +26,13 @@
 </template>
 
 <script>
-import { conversation } from 'app/src'
+import { chatList } from 'app/src'
 
 export default {
   name: 'TwoPeople',
   data () {
     return {
-      twoPeople: (conversation.twoPeople)
+      twoPeople: (chatList.twoPeople)
     }
   },
   methods: {

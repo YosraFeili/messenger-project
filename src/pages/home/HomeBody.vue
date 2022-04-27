@@ -7,7 +7,11 @@
             <q-chat-message class="bg-data" label="Sunday, 19th"/>
           </div>
           <div class="">
-            <q-chat-message :text="[data.textMe]" sent/>
+            <q-chat-message
+              :text="[data.textMe]"
+              avatar="https://cdn.quasar.dev/img/avatar4.jpg"
+              name="Jane"
+              sent/>
             <q-menu
               touch-position
               context-menu
@@ -43,7 +47,10 @@
           </div>
 
           <div class="">
-            <q-chat-message :text="[data.textContact]"/>
+            <q-chat-message :text="[data.textContact]"
+            avatar="https://cdn.quasar.dev/img/avatar3.jpg"
+            name="me"
+            />
             <q-menu
               touch-position
               context-menu

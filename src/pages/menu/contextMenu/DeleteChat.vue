@@ -2,11 +2,11 @@
   <div class="">
     <div class="blockCard">
       <q-card-section class="mt-5 mr-3">
-        <div class="text">میخواهید این مکالمه را حذف کنید؟</div>
+        <div class="text">آیا میخواهیدحذف شود؟</div>
       </q-card-section>
       <q-card-actions class="ml-3">
-        <q-btn flat class="text-btn text-red-6" @click="deleteConversation()">حذف</q-btn>
-        <q-btn flat class="text-btn text-grey-6">انصراف</q-btn>
+        <q-btn flat class="text-btn text-red-6" @click="deleteConversation">حذف</q-btn>
+        <q-btn flat class="text-btn text-grey-6" @click="cancelDelete">انصراف</q-btn>
       </q-card-actions>
     </div>
   </div>
@@ -15,9 +15,13 @@
 <script>
 export default {
   name: 'DeleteChat',
+  props: ['contacts'],
   methods: {
     deleteConversation () {
-      console.log()
+      this.$emit('delete-conversation')
+    },
+    cancelDelete () {
+      this.$emit('cancel')
     }
   }
 }

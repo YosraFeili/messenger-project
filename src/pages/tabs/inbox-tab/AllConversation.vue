@@ -1,10 +1,7 @@
 <template>
 <div class="">
   <div class="cursor-pointer" v-for="contact in contacts" :key="contact.id" @click="showChatPage(contact)">
-      <q-menu
-        touch-position
-        context-menu
-      >
+      <q-menu touch-position context-menu>
 
         <q-list class="items-center" dense style="min-width: 146px">
           <q-item clickable v-close-popup>
@@ -21,8 +18,10 @@
         </q-list>
 
       </q-menu>
+
     <q-list class="border-b-2 border-gray-100" padding>
       <q-item>
+
         <q-item-section side top>
           <div class="text mb-1">{{ contact.lastSeen }}</div>
           <q-badge rounded color="primary" label="9" />
@@ -41,29 +40,38 @@
 
       </q-item>
     </q-list>
+
   </div>
 
-  <div class="bg-popUp flex justify-center items-center" v-if="popUpDelete" @click="popUpDelete=false">
-    <DeleteChat/>
+  <div class="bg-popUp flex justify-center items-center" v-if="popUpDelete">
+    <DeleteChat @delete-conversation="deleteConversation()"  @cancel="cancelDelete" :contacts="contacts"/>
   </div>
 </div>
 </template>
 
 <script>
-import { conversation } from 'app/src'
+import { chatList } from 'app/src'
 import DeleteChat from 'pages/menu/contextMenu/DeleteChat'
 export default {
   name: 'AllConversation',
   components: { DeleteChat },
   data () {
     return {
-      contacts: (conversation.allConversation),
+      contacts: (chatList.allConversation),
       popUpDelete: false
     }
   },
   methods: {
     showChatPage (contact) {
       this.$emitter.emit('showChat', contact)
+    },
+    deleteConversation () {
+      console.log('user deleted')
+      this.popUpDelete = false
+    },
+    cancelDelete () {
+      this.popUpDelete = false
+      console.log('cancel')
     }
   }
 }

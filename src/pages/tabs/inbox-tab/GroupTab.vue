@@ -26,13 +26,13 @@
 </template>
 
 <script>
-import { conversation } from 'app/src'
+import { chatList } from 'app/src'
 
 export default {
   name: 'GroupTab',
   data () {
     return {
-      groups: (conversation.group)
+      groups: (chatList.group)
     }
   },
   methods: {

@@ -1,33 +1,32 @@
-export const data = {
-  contact: [
-    {
-      name: 'علیرضا',
-      image: 'http://localhost/img/Profile.svg',
-      lastSeen: '5 second ago'
-    },
-    {
-      name: 'آرش اصغری',
-      image: 'http://localhost/img/Profile.svg',
-      lastSeen: '1 houre ago'
-    },
-    {
-      name: 'سارا',
-      image: 'http://localhost/img/Sara.svg',
-      lastSeen: '5 min ago'
-    },
-    {
-      name: 'شیما',
-      image: 'http://localhost/img/Shima.svg',
-      lastSeen: '10 houre ago'
-    },
-    {
-      name: 'استاد نبوی',
-      image: 'http://localhost/img/Shima.svg',
-      lastSeen: '1 houre ago'
-    }
-  ]
-}
-export const conversation = {
+export const contacts = [
+  {
+    name: 'علیرضا',
+    image: 'http://localhost/img/Profile.svg',
+    lastSeen: '5 second ago'
+  },
+  {
+    name: 'آرش اصغری',
+    image: 'http://localhost/img/Profile.svg',
+    lastSeen: '1 houre ago'
+  },
+  {
+    name: 'سارا',
+    image: 'http://localhost/img/Sara.svg',
+    lastSeen: '5 min ago'
+  },
+  {
+    name: 'شیما',
+    image: 'http://localhost/img/Shima.svg',
+    lastSeen: '10 houre ago'
+  },
+  {
+    name: 'استاد نبوی',
+    image: 'http://localhost/img/Shima.svg',
+    lastSeen: '1 houre ago'
+  }
+]
+
+export const chatList = {
   allConversation: [
     {
       id: '1',
@@ -167,3 +166,7 @@ export const conversation = {
     }
   ]
 }
+
+export const messages = []
+
+export const shareMedia = []

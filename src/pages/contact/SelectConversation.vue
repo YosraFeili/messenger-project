@@ -31,14 +31,14 @@
 </template>
 
 <script>
-import { data } from 'app/src'
+import { contacts } from 'app/src'
 
 export default {
   name: 'SelectConversation',
   data () {
     return {
       select: false,
-      contacts: data.contact
+      contacts: contacts
     }
   }
 }
