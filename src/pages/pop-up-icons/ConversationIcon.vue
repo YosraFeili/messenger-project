@@ -7,11 +7,11 @@
   <div class="bg-popUp" v-if="conversationIcon">
     <div class="pop-up bg-white">
       <div class="header-popUp flex justify-between items-center">
-        <div class="ml-3">
+        <div class="ml-3 cursor-pointer">
           <img src="../../assets/icon/Search.svg">
         </div>
         <div class="text-white">انتخاب گفتگو</div>
-        <div class="mr-3">
+        <div class="mr-3 cursor-pointer">
           <img src="../../assets/icon/CloseSquare.svg" @click="conversationIcon=false">
         </div>
       </div>

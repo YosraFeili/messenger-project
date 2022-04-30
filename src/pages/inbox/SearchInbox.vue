@@ -1,7 +1,7 @@
 <template>
   <div class="header flex justify-between items-center bg-primary">
     <div class="ml-4 cursor-pointer">
-      <img src="../../assets/icon/CloseSquare.svg"  @click="closeSearchIcon">
+      <img src="../../assets/icon/CloseSquare.svg" @click="closeSearchIcon">
     </div>
     <div class="flex mr-4">
       <q-input  v-model="text" label-color="white" label="جستجو کنید"/>

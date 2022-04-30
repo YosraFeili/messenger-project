@@ -11,8 +11,8 @@
 
             <div class="flex flex-1">
               <q-item-section>
-                <q-item-label class="text-right">{{contact.name}}</q-item-label>
-                <q-item-label class="font-status text-right" caption>
+                <q-item-label class="text-right cursor-default">{{contact.name}}</q-item-label>
+                <q-item-label class="font-status text-right cursor-default" caption>
                   {{ contact.lastSeen }}
                 </q-item-label>
               </q-item-section>

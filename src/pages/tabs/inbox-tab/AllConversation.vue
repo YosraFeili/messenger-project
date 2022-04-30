@@ -1,6 +1,6 @@
 <template>
 <div class="">
-  <div class="cursor-pointer hover:bg-blue-100" v-for="contact in contacts" :key="contact.id" @click="showChatPage(contact)">
+  <div class="cursor-pointer hover:bg-blue-100" v-for="chat in chats" :key="chat.id" @click="showChatPage(chat)">
       <q-menu touch-position context-menu>
 
         <q-list class="items-center" dense style="min-width: 146px">
@@ -23,18 +23,18 @@
       <q-item>
 
         <q-item-section side top>
-          <div class="text mb-1">{{ contact.lastSeen }}</div>
+          <div class="text mb-1">{{ chat.lastSeen }}</div>
           <q-badge rounded color="primary" label="9" />
         </q-item-section>
 
         <q-item-section>
-          <q-item-label class="text-right">{{ contact.name }}</q-item-label>
-          <q-item-label class="text-right" caption>{{contact.status}}</q-item-label>
+          <q-item-label class="text-right">{{ chat.name }}</q-item-label>
+          <q-item-label class="text-right" caption>{{chat.status}}</q-item-label>
         </q-item-section>
 
         <q-item-section top avatar>
           <q-avatar>
-            <img :src="contact.image">
+            <img :src="chat.image">
           </q-avatar>
         </q-item-section>
 
@@ -44,7 +44,7 @@
   </div>
 
   <div class="bg-popUp flex justify-center items-center" v-if="popUpDelete">
-    <DeleteChat @delete-conversation="deleteConversation()"  @cancel="cancelDelete" :contacts="contacts"/>
+    <DeleteChat @delete-conversation="deleteConversation()"  @cancel="cancelDelete"/>
   </div>
 </div>
 </template>
@@ -57,7 +57,7 @@ export default {
   components: { DeleteChat },
   data () {
     return {
-      contacts: (chatList.allConversation),
+      chats: (chatList),
       popUpDelete: false
     }
   },

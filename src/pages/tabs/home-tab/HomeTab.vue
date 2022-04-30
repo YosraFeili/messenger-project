@@ -47,7 +47,7 @@
           <div class="mr-5 text-caption">گروه های مشترک</div>
         </div>
         <div class="">
-          <div class="cursor-pointer" v-for="(group, i) in groups" :key="i">
+          <div class="cursor-pointer" v-for="(group, i) in gpChats" :key="i">
             <q-list class="border-b-2 border-gray-100" padding>
               <q-item>
                 <q-item-section>
@@ -83,8 +83,14 @@ export default {
   props: ['data'],
   data () {
     return {
-      openShareFile: false,
-      groups: (chatList.group)
+      openShareFile: false
+    }
+  },
+  computed: {
+    gpChats () {
+      return chatList.filter(chat => {
+        return chat.type === 'gp'
+      })
     }
   },
   methods: {
