@@ -20,7 +20,7 @@
 
             <q-item-section top avatar>
               <q-avatar>
-                <img :src="data.image" class="cursor-pointer" @click="openShareFile">
+                <img :src="data.avatar" class="cursor-pointer" @click="openShareFile">
               </q-avatar>
             </q-item-section>
 

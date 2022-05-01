@@ -28,7 +28,7 @@
 
             <q-item-section top avatar>
               <q-avatar>
-                <img :src="data.image" class="cursor-default">
+                <img :src="data.avatar" class="cursor-default rounded-full bg-gray-200">
               </q-avatar>
             </q-item-section>
 
@@ -57,7 +57,7 @@
 
                 <q-item-section top avatar>
                   <q-avatar>
-                    <img :src="group.image">
+                    <img :src="group.avatar">
                   </q-avatar>
                 </q-item-section>
 

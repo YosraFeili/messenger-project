@@ -1,5 +1,6 @@
 <template>
   <div class="">
+    <q-scroll-area :thumb-style="thumbStyle" style="height: 574px;">
     <div class="cursor-pointer hover:bg-blue-100" v-for="people in pvChats" :key="people.id"
          @click="showChatPage(people)">
       <q-list class="border-b-2 border-gray-100">
@@ -16,13 +17,14 @@
 
           <q-item-section top avatar>
             <q-avatar>
-              <img :src="people.image">
+              <img :src="people.avatar">
             </q-avatar>
           </q-item-section>
 
         </q-item>
       </q-list>
     </div>
+    </q-scroll-area>
   </div>
 </template>
 
@@ -36,6 +38,17 @@ export default {
       return chatList.filter(chat => {
         return chat.type === 'pv'
       })
+    }
+  },
+  data () {
+    return {
+      thumbStyle: {
+        right: '2px',
+        borderRadius: '5px',
+        backgroundColor: '#027be3',
+        width: '2px',
+        opacity: '0.75'
+      }
     }
   },
   methods: {

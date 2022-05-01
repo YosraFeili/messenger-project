@@ -1,5 +1,6 @@
 <template>
 <div class="">
+  <q-scroll-area :thumb-style="thumbStyle" style="height: 574px;">
   <div class="cursor-pointer hover:bg-blue-100" v-for="chat in chats" :key="chat.id" @click="showChatPage(chat)">
       <q-menu touch-position context-menu>
 
@@ -34,7 +35,7 @@
 
         <q-item-section top avatar>
           <q-avatar>
-            <img :src="chat.image">
+            <img :src="chat.avatar">
           </q-avatar>
         </q-item-section>
 
@@ -46,6 +47,7 @@
   <div class="bg-popUp flex justify-center items-center" v-if="popUpDelete">
     <DeleteChat @delete-conversation="deleteConversation()"  @cancel="cancelDelete"/>
   </div>
+  </q-scroll-area>
 </div>
 </template>
 
@@ -58,7 +60,16 @@ export default {
   data () {
     return {
       chats: (chatList),
-      popUpDelete: false
+
+      popUpDelete: false,
+
+      thumbStyle: {
+        right: '2px',
+        borderRadius: '5px',
+        backgroundColor: '#027be3',
+        width: '2px',
+        opacity: '0.75'
+      }
     }
   },
   methods: {

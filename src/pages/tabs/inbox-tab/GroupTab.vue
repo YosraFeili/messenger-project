@@ -1,5 +1,6 @@
 <template>
   <div class="">
+    <q-scroll-area :thumb-style="thumbStyle" style="height: 574px;">
     <div class="cursor-pointer hover:bg-blue-100" v-for="group in gpChats" :key="group.id" @click="showChatPage(group)">
       <q-list class="border-b-2 border-gray-100">
         <q-item>
@@ -15,13 +16,14 @@
 
           <q-item-section top avatar>
             <q-avatar>
-              <img :src="group.image">
+              <img :src="group.avatar">
             </q-avatar>
           </q-item-section>
 
         </q-item>
       </q-list>
     </div>
+    </q-scroll-area>
   </div>
 </template>
 
@@ -35,6 +37,17 @@ export default {
       return chatList.filter(chat => {
         return chat.type === 'gp'
       })
+    }
+  },
+  data () {
+    return {
+      thumbStyle: {
+        right: '2px',
+        borderRadius: '5px',
+        backgroundColor: '#027be3',
+        width: '2px',
+        opacity: '0.75'
+      }
     }
   },
   methods: {

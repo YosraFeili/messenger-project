@@ -18,7 +18,7 @@
               </q-item-section>
               <q-item-section top avatar>
                 <q-avatar>
-                  <img :src="contact.image">
+                  <img :src="contact.avatar">
                 </q-avatar>
               </q-item-section>
             </div>
