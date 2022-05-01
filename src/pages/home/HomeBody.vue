@@ -5,53 +5,13 @@
         <div class="q-pa-md row justify-center">
           <div style="width: 100%; max-width: 1000px">
             <div class="">
-              <VideoPlayer v-if="showImage"/>
-              <AudioPlayer v-if="showAudio"/>
-              <TextChat v-if="showText"/>
+              <VideoPlayer :messages="messages" v-if="showImage"/>
+              <AudioPlayer :messages="messages" v-if="showAudio"/>
+              <TextChat :messages=messages v-if="showText"/>
             </div>
 
-            <div class="" v-for="message in myText" :key="message.id">
-              <q-chat-message
-                :text="[message.text]"
-                :avatar="message.avatar"
-                :name="message.name"
-                bg-color="blue-200"
-              />
-              <q-menu
-                touch-position
-                context-menu
-              >
-
-                <q-list class="items-center" dense style="min-width: 146px">
-                  <q-item clickable v-close-popup>
-                    <q-item-section class="text-right">پاسخ</q-item-section>
-                  </q-item>
-                  <q-separator/>
-                  <q-item clickable v-close-popup>
-                    <q-item-section class="text-right">باز ارسال</q-item-section>
-                  </q-item>
-                  <q-separator/>
-                  <q-item clickable v-close-popup>
-                    <q-item-section class="text-right">ارسال پیام</q-item-section>
-                  </q-item>
-                  <q-separator/>
-                  <q-item clickable v-close-popup>
-                    <q-item-section class="text-right">ذخیره</q-item-section>
-                  </q-item>
-                </q-list>
-                <q-separator/>
-                <q-item clickable v-close-popup>
-                  <q-item-section class="text-right">انتخاب</q-item-section>
-                </q-item>
-                <q-separator/>
-                <q-item clickable v-close-popup>
-                  <q-item-section class="text-right">حذف</q-item-section>
-                </q-item>
-              </q-menu>
-              <div class="flex space-x-20">
-                <div class="time flex justify-start">{{ message.time }}</div>
-                <img src="../../assets/icon/Unseen-icon.svg">
-              </div>
+            <div class="">
+             <MeTextChat :messages="messages"/>
             </div>
           </div>
         </div>
@@ -66,23 +26,13 @@ import { messages } from 'app/src'
 import VideoPlayer from 'pages/type/video/VideoPlayer'
 import AudioPlayer from 'pages/type/audio/AudioPlayer'
 import TextChat from 'pages/type/text/TextChat'
+import MeTextChat from 'pages/type/text/MeTextChat'
 
 export default {
   name: 'HomeBody',
-  components: { TextChat, AudioPlayer, VideoPlayer },
+  components: { MeTextChat, TextChat, AudioPlayer, VideoPlayer },
   props: ['data'],
-  computed: {
-    myText () {
-      return messages.filter(message => {
-        return message.senderId === 'me'
-      })
-    },
-    senderId () {
-      return messages.filter(message => {
-        return message.senderId === 12
-      })
-    }
-  },
+
   data () {
     return {
       messages: messages,
@@ -92,6 +42,8 @@ export default {
       showAudio: false,
 
       showText: false,
+
+      showFile: false,
 
       thumbStyle: {
         right: '2px',

@@ -131,7 +131,9 @@ export const messages = [
     id: 3,
     type: 'audio',
     file_name: 'music',
+    singer_name: 'shajariyan',
     file_size: '3.50MB',
+    file_time: '01:33-02:33',
     file_format: 'Audio',
     senderId: 12,
     date: 'friday, 29th',
@@ -150,6 +152,16 @@ export const messages = [
     time: '21:10',
     name: 'بابک',
     avatar: 'http://localhost/img/Shima.svg'
+  },
+  {
+    id: 5,
+    type: 'text',
+    text: 'جزوه معادلات من دست کیه؟',
+    senderId: 12,
+    date: 'friday, 29th',
+    time: '21:10',
+    name: 'بابک',
+    avatar: 'http://localhost/img/Babak-jahani.svg'
   }
 ]
 
