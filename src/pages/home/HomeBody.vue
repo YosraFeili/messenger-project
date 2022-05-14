@@ -15,11 +15,11 @@
             </div>
 
             <div class="" v-if="mes.typeContent === 'image'">
-             <ShowImage :mes="mes"/>
+              <ShowImage :mes="mes"/>
             </div>
 
             <div class="" v-if="mes.typeContent === 'video'">
-             <VideoPlayer :mes="mes"/>
+              <VideoPlayer :mes="mes"/>
             </div>
 
             <div class="" v-if="mes.typeContent === 'text'">
@@ -34,160 +34,23 @@
           <div class="" v-for="(mes, i) in data.meMessages" :key="i">
 
             <div class="" v-if="mes.typeContent === 'text'">
-
-              <q-chat-message
-                :text="[mes.text]"
-                :avatar="mes.avatar"
-                bg-color="blue-200"
-              />
-
-              <q-menu
-                touch-position
-                context-menu
-              >
-
-                <q-list class="items-center" dense style="min-width: 146px">
-                  <q-item clickable v-close-popup>
-                    <q-item-section class="text-right">پاسخ</q-item-section>
-                  </q-item>
-                  <q-separator/>
-                  <q-item clickable v-close-popup>
-                    <q-item-section class="text-right">باز ارسال</q-item-section>
-                  </q-item>
-                  <q-separator/>
-                  <q-item clickable v-close-popup>
-                    <q-item-section class="text-right">ارسال پیام</q-item-section>
-                  </q-item>
-                  <q-separator/>
-                  <q-item clickable v-close-popup>
-                    <q-item-section class="text-right">ذخیره</q-item-section>
-                  </q-item>
-                </q-list>
-                <q-separator/>
-                <q-item clickable v-close-popup>
-                  <q-item-section class="text-right">انتخاب</q-item-section>
-                </q-item>
-                <q-separator/>
-                <q-item clickable v-close-popup>
-                  <q-item-section class="text-right">حذف</q-item-section>
-                </q-item>
-              </q-menu>
-
-              <div class="flex space-x-20">
-                <div class="time flex justify-start">{{ mes.time }}</div>
-                <img src="../../assets/icon/Unseen-icon.svg">
-              </div>
-
+              <MeMessageText :mes="mes"/>
             </div>
 
             <div class="" v-if="mes.typeContent === 'music'">
-              <q-chat-message
-                :avatar="mes.avatar"
-                bg-color="blue-200">
-                <div class="time flex justify-between">
-
-                  <div class="">
-                    <q-btn class="btn">
-                      <img src="../../assets/icon/Play.svg" v-if="audioPlay">
-                      <img src="../../assets/icon/Download.svg" @click="downloadAudio" v-if="audioDownload">
-                    </q-btn>
-                  </div>
-
-                  <div class="ml-1">
-                    <div class="text cursor-default">{{ mes.name }}</div>
-                    <div class="mt-3">
-                      <hr/>
-                    </div>
-                    <div class="flex space-x-32 mt-2">
-                      <div class="text cursor-default">{{ mes.file_time }}</div>
-                      <div class="text cursor-default">{{ mes.file_size }}</div>
-                    </div>
-                  </div>
-
-                </div>
-              </q-chat-message>
+              <MeMessageMusic :mes="mes"/>
             </div>
 
             <div class="" v-if="mes.typeContent === 'audio'">
-
-              <q-chat-message
-                :avatar="mes.avatar"
-                bg-color="blue-200">
-                <div class="time flex justify-between">
-
-                  <div class="">
-                    <q-btn class="btn">
-                      <img src="../../assets/icon/Play.svg" v-if="audioPlay">
-                      <img src="../../assets/icon/Download.svg" @click="downloadAudio" v-if="audioDownload">
-                    </q-btn>
-                  </div>
-
-                  <div class="ml-1">
-                    <div class="text cursor-default">{{mes.name}}</div>
-                    <div class="mt-3">
-                      <hr/>
-                    </div>
-                    <div class="flex space-x-32 mt-2">
-                      <div class="text cursor-default">{{ mes.file_time }}</div>
-                      <div class="text cursor-default">{{ mes.file_size }}</div>
-                    </div>
-                  </div>
-
-                </div>
-              </q-chat-message>
+              <MeMessageAudio :mes="mes"/>
             </div>
 
             <div class="" v-if="mes.typeContent === 'image'">
-              <q-chat-message
-                :avatar="mes.avatar"
-                :name="mes.name"
-                bg-color="blue-200"
-              >
-
-                <div class="time flex justify-end">
-                  <div class="">
-                    <div class="">
-                      <div class="title text-white text-center cursor-default" v-if="fileSize">{{ mes.file_size }}</div>
-                      <img :src="mes.img" v-if="imgDownload">
-                      <img :src="mes.loadImg" v-if="imgload">
-                      <div class="-mt-20 flex justify-center" v-if="imgDownload">
-                        <img src="../../assets/icon/Video-Download.svg" class="cursor-pointer" @click="downloadImg">
-                      </div>
-                    </div>
-                    <div class="text-right text-sm mt-10">{{ mes.file_name }}</div>
-                  </div>
-                </div>
-              </q-chat-message>
+             <MeMessageImg :mes="mes"/>
             </div>
 
             <div class="" v-if="mes.typeContent === 'video'">
-              <div class="">
-                <q-chat-message
-                  :avatar="mes.avatar"
-                  :name="mes.name"
-                  bg-color="blue-200"
-                >
-
-                  <div class="time flex justify-end">
-                    <div class="">
-                      <div class="">
-                        <div class="title text-white text-center cursor-default" v-if="fileSize">{{ mes.file_size }}
-                        </div>
-                        <img :src="mes.file_url">
-                        <div class="-mt-20 flex justify-center" v-if="videoPlay">
-                          <img src="../../assets/icon/Video-Player.svg" class="cursor-pointer">
-                        </div>
-
-                        <div class="-mt-20 flex justify-center" v-if="videoDownload">
-                          <img src="../../assets/icon/Video-Download.svg" class="cursor-pointer" @click="downloadVideo">
-                        </div>
-                      </div>
-                      <div class="text-right text-sm mt-10">{{ mes.file_name }}</div>
-                    </div>
-                  </div>
-                </q-chat-message>
-
-              </div>
+             <MeMessageVideo :mes="mes"/>
             </div>
 
             <div class="" v-if="mes.typeContent === 'file'"></div>
@@ -204,14 +67,20 @@ import AudioPlayer from 'pages/type/audio/AudioPlayer'
 import ShowImage from 'pages/type/img/ShowImage'
 import VideoPlayer from 'pages/type/video/VideoPlayer'
 import TextChat from 'pages/type/text/TextChat'
+import MeMessageText from 'pages/type/text/MeMessageText'
+import MeMessageAudio from 'pages/type/audio/MeMessageAudio'
+import MeMessageMusic from 'pages/type/music/MeMessageMusic'
+import MeMessageImg from 'pages/type/img/MeMessageImg'
+import MeMessageVideo from 'pages/type/video/MeMessageVideo'
 
 export default {
   name: 'HomeBody',
-  components: { TextChat, VideoPlayer, ShowImage, AudioPlayer, MusicPlayer },
+  components: { MeMessageVideo, MeMessageImg, MeMessageMusic, MeMessageAudio, MeMessageText, TextChat, VideoPlayer, ShowImage, AudioPlayer, MusicPlayer },
   props: ['data'],
 
   data () {
     return {
+      ph: '',
       musicDownload: true,
       musicPlay: false,
 
@@ -289,4 +158,5 @@ export default {
   font-size: 9px;
   z-index: 1;
 }
+
 </style>

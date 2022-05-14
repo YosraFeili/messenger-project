@@ -352,6 +352,15 @@ export const chatList = [
         senderId: 'me',
         date: 'saturday, 18th',
         time: '7:02'
+      },
+      {
+        typeContent: 'video',
+        file_name: 'فصل 8 ریاضیات',
+        file_url: 'http://localhost/img/Men.svg',
+        file_size: '50.5MB',
+        file_format: 'svg',
+        date: 'saturday, 18th',
+        time: '02:01'
       }
     ]
 
