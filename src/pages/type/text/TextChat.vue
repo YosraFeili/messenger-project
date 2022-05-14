@@ -1,13 +1,14 @@
 <template>
 <div class="">
-  <div class="" v-for="message in type" :key="message.id">
+  <div class="">
     <q-chat-message
-      :text="[message.text]"
-      :avatar="message.avatar"
-      :name="message.name"
+      :text="[mes.text]"
+      :avatar="mes.avatar"
+      :name="mes.name"
       bg-color="white"
       sent
     />
+
     <q-menu
       touch-position
       context-menu
@@ -39,24 +40,17 @@
         <q-item-section class="text-right">حذف</q-item-section>
       </q-item>
     </q-menu>
-    <div class="time flex justify-end">{{ message.time }}</div>
+
   </div>
 </div>
 </template>
 
 <script>
-import { messages } from 'app/src'
-
 export default {
   name: 'TextChat',
-  props: ['messages'],
-  computed: {
-    type () {
-      return messages.filter(message => {
-        return message.type === 'text'
-      })
-    }
-  }
+
+  props: ['mes']
+
 }
 </script>
 

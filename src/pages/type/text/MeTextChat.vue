@@ -1,12 +1,12 @@
 <template>
   <div class="">
-    <div class="" v-for="message in myText" :key="message.id">
+    <div class="">
       <q-chat-message
-        :text="[message.text]"
-        :avatar="message.avatar"
-        :name="message.name"
+        :text="['khghgh']"
+        avatar="avatar"
         bg-color="blue-200"
       />
+
       <q-menu
         touch-position
         context-menu
@@ -38,8 +38,9 @@
           <q-item-section class="text-right">حذف</q-item-section>
         </q-item>
       </q-menu>
+
       <div class="flex space-x-20">
-        <div class="time flex justify-start">{{ message.time }}</div>
+        <div class="time flex justify-start">time</div>
         <img src="../../../assets/icon/Unseen-icon.svg">
       </div>
     </div>
@@ -47,18 +48,11 @@
 </template>
 
 <script>
-import { messages } from 'app/src'
 
 export default {
   name: 'MeTextChat',
-  props: ['messages'],
-  computed: {
-    myText () {
-      return messages.filter(message => {
-        return message.senderId === 'me'
-      })
-    }
-  }
+
+  props: ['data']
 }
 </script>
 
