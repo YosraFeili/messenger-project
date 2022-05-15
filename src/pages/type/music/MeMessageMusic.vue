@@ -1,6 +1,5 @@
 <template>
 <div class="">
-  <div class="">
     <div class="">
       <div class="flex items-center space-x-5">
 
@@ -69,7 +68,6 @@
         </q-item>
       </q-menu>
     </div>
-  </div>
 </div>
 </template>
 

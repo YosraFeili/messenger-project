@@ -2,60 +2,64 @@
   <div class="">
     <div class="bg">
       <q-scroll-area :thumb-style="thumbStyle" style="height: 574px;">
+        <div class="flex justify-between">
 
-        <div class="q-pa-md row justify-center">
-          <div style="width: 100%; max-width: 1000px" v-for="(mes, i) in data.messages" :key="i">
+          <div class="ml-7 mt-5">
+            <div class="" v-for="(mes, i) in data.meMessages" :key="i">
 
-            <div class="" v-if="mes.typeContent === 'music'">
-              <MusicPlayer :mes="mes"/>
+              <div class="mt-5" v-if="mes.typeContent === 'text'">
+                <MeMessageText :mes="mes"/>
+              </div>
+
+              <div class="mt-5" v-if="mes.typeContent === 'music'">
+                <MeMessageMusic :mes="mes"/>
+              </div>
+
+              <div class="mt-5" v-if="mes.typeContent === 'audio'">
+                <MeMessageAudio :mes="mes"/>
+              </div>
+
+              <div class="mt-5" v-if="mes.typeContent === 'image'">
+                <MeMessageImg :mes="mes"/>
+              </div>
+
+              <div class="mt-5" v-if="mes.typeContent === 'video'">
+                <MeMessageVideo :mes="mes"/>
+              </div>
+
+              <div class="mt-5" v-if="mes.typeContent === 'file'"></div>
             </div>
-
-            <div class="" v-if="mes.typeContent === 'audio'">
-              <AudioPlayer :mes="mes"/>
-            </div>
-
-            <div class="" v-if="mes.typeContent === 'image'">
-              <ShowImage :mes="mes"/>
-            </div>
-
-            <div class="" v-if="mes.typeContent === 'video'">
-              <VideoPlayer :mes="mes"/>
-            </div>
-
-            <div class="" v-if="mes.typeContent === 'text'">
-              <TextChat :mes="mes"/>
-            </div>
-
-            <div class="" v-if="mes.typeContent === 'file'"></div>
           </div>
+
+          <div class="mr-7 mt-16">
+            <div v-for="(mes, i) in data.messages" :key="i">
+
+              <div class="mt-10" v-if="mes.typeContent === 'music'">
+                <MusicPlayer :mes="mes"/>
+              </div>
+
+              <div class="mt-10" v-if="mes.typeContent === 'audio'">
+                <AudioPlayer :mes="mes"/>
+              </div>
+
+              <div class="mt-10 flex justify-end" v-if="mes.typeContent === 'image'">
+                <ShowImage :mes="mes"/>
+              </div>
+
+              <div class="mt-10 flex justify-end" v-if="mes.typeContent === 'video'">
+                <VideoPlayer :mes="mes"/>
+              </div>
+
+              <div class="mt-10 flex justify-end" v-if="mes.typeContent === 'text'">
+                <TextChat :mes="mes"/>
+              </div>
+
+              <div class="mt-10" v-if="mes.typeContent === 'file'"></div>
+            </div>
+          </div>
+
         </div>
 
-        <div class="ml-7">
-          <div class="" v-for="(mes, i) in data.meMessages" :key="i">
-
-            <div class="" v-if="mes.typeContent === 'text'">
-              <MeMessageText :mes="mes"/>
-            </div>
-
-            <div class="" v-if="mes.typeContent === 'music'">
-              <MeMessageMusic :mes="mes"/>
-            </div>
-
-            <div class="" v-if="mes.typeContent === 'audio'">
-              <MeMessageAudio :mes="mes"/>
-            </div>
-
-            <div class="" v-if="mes.typeContent === 'image'">
-             <MeMessageImg :mes="mes"/>
-            </div>
-
-            <div class="" v-if="mes.typeContent === 'video'">
-             <MeMessageVideo :mes="mes"/>
-            </div>
-
-            <div class="" v-if="mes.typeContent === 'file'"></div>
-          </div>
-        </div>
       </q-scroll-area>
     </div>
   </div>
@@ -75,25 +79,22 @@ import MeMessageVideo from 'pages/type/video/MeMessageVideo'
 
 export default {
   name: 'HomeBody',
-  components: { MeMessageVideo, MeMessageImg, MeMessageMusic, MeMessageAudio, MeMessageText, TextChat, VideoPlayer, ShowImage, AudioPlayer, MusicPlayer },
+  components: {
+    MeMessageVideo,
+    MeMessageImg,
+    MeMessageMusic,
+    MeMessageAudio,
+    MeMessageText,
+    TextChat,
+    VideoPlayer,
+    ShowImage,
+    AudioPlayer,
+    MusicPlayer
+  },
   props: ['data'],
 
   data () {
     return {
-      ph: '',
-      musicDownload: true,
-      musicPlay: false,
-
-      audioDownload: true,
-      audioPlay: false,
-
-      imgDownload: true,
-      imgload: false,
-      fileSize: false,
-
-      videoDownload: true,
-      videoPlay: false,
-
       thumbStyle: {
         right: '2px',
         borderRadius: '5px',
@@ -102,31 +103,7 @@ export default {
         opacity: '0.75'
       }
     }
-  },
-  methods: {
-    downloadMusic () {
-      this.musicPlay = true
-      this.musicDownload = false
-    },
-
-    downloadAudio () {
-      this.audioPlay = true
-      this.audioDownload = false
-    },
-
-    downloadImg () {
-      this.imgload = true
-      this.fileSize = true
-      this.imgDownload = false
-    },
-
-    downloadVideo () {
-      this.videoPlay = true
-      this.fileSize = true
-      this.videoDownload = false
-    }
   }
-
 }
 </script>
 
@@ -136,27 +113,6 @@ export default {
   height: 574px;
   color: white;
   opacity: 0.9;
-}
-
-.btn {
-  background: #0055ff;
-  border-radius: 8px;
-  width: 59px;
-  height: 59px;
-}
-
-.text {
-  font-size: 12px;
-}
-
-.title {
-  background: #1e1e1e;
-  width: 41px;
-  height: 13px;
-  border-radius: 50px;
-  position: absolute;
-  font-size: 9px;
-  z-index: 1;
 }
 
 </style>

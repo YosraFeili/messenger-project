@@ -115,7 +115,7 @@ export const chatList = [
         senderId: 12,
         date: 'friday, 29th',
         time: '21:10',
-        name: 'علیرضا',
+        name: 'علیرضافخیم',
         avatar: 'http://localhost/img/Profile.svg'
       }
     ],
@@ -180,7 +180,9 @@ export const chatList = [
         file_format: 'svg',
         senderId: 10,
         date: 'saturday, 18th',
-        time: '5:01'
+        time: '5:01',
+        name: 'علیرضا',
+        avatar: 'http://localhost/img/Profile.svg'
       },
       {
         typeContent: 'audio',

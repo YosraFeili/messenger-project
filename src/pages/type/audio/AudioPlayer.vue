@@ -1,40 +1,73 @@
 <template>
   <div class="">
-    <div style="width: 100%; max-width: 1000px">
-
-      <div class="">
-        <q-chat-message
-          :avatar="mes.avatar"
-          :name="mes.name"
-          bg-color="white"
-          sent>
-
-          <div class="time flex justify-between">
-
-            <div class="">
-              <q-btn class="btn">
-                <img src="../../../assets/icon/Play.svg" v-if="audioPlay">
-                <img src="../../../assets/icon/Download.svg" @click="downloadAudio" v-if="audioDownload">
-              </q-btn>
-            </div>
-
-            <div class="ml-1">
-              <div class="text cursor-default">{{ mes.name }}</div>
-              <div class="mt-3">
-                <hr/>
+        <div class="flex items-center space-x-1">
+          <div class="q-chat bg-blue-200" :style="(ph.length>=50)? 'height:80px;width:360px;padding:7px' : '' ">
+            <div class="flex justify-between items-center">
+              <div class="">
+                <q-btn class="btn">
+                  <img src="../../../assets/icon/Play.svg" v-if="audioPlay">
+                  <img src="../../../assets/icon/Download.svg" @click="downloadAudio" v-if="audioDownload">
+                </q-btn>
               </div>
-              <div class="flex space-x-32 mt-2">
-                <div class="text cursor-default">{{ mes.file_time }}</div>
-                <div class="text cursor-default">{{ mes.file_size }}</div>
+
+              <div class="ml-2">
+                <div class="flex items-center space-x-1">
+                  <div class="text-footer cursor-default">{{ mes.name }}</div>
+                </div>
+                <div class="">
+                  <hr/>
+                </div>
+                <div class="flex space-x-36">
+                  <div class="text cursor-default">{{ mes.file_time }}</div>
+                  <div class="text cursor-default">{{ mes.file_size }}</div>
+                </div>
               </div>
             </div>
-
           </div>
-        </q-chat-message>
+          <div class="">
+            <img :src="mes.avatar" class="background-img">
+          </div>
+        </div>
+        <div class="flex items-center space-x-60" :class="(ph.length>=50)? 'space-x-80' : '' ">
+          <div class="text-footer">{{ mes.time }}</div>
+          <div class="text-footer">
+            {{ mes.name }}
+          </div>
+        </div>
 
+        <q-menu
+          touch-position
+          context-menu
+        >
+
+          <q-list class="items-center" dense style="min-width: 146px">
+            <q-item clickable v-close-popup>
+              <q-item-section class="text-right">پاسخ</q-item-section>
+            </q-item>
+            <q-separator/>
+            <q-item clickable v-close-popup>
+              <q-item-section class="text-right">باز ارسال</q-item-section>
+            </q-item>
+            <q-separator/>
+            <q-item clickable v-close-popup>
+              <q-item-section class="text-right">ارسال پیام</q-item-section>
+            </q-item>
+            <q-separator/>
+            <q-item clickable v-close-popup>
+              <q-item-section class="text-right">ذخیره</q-item-section>
+            </q-item>
+          </q-list>
+          <q-separator/>
+          <q-item clickable v-close-popup>
+            <q-item-section class="text-right">انتخاب</q-item-section>
+          </q-item>
+          <q-separator/>
+          <q-item clickable v-close-popup>
+            <q-item-section class="text-right">حذف</q-item-section>
+          </q-item>
+        </q-menu>
       </div>
-    </div>
-    </div>
+
 </template>
 
 <script>
@@ -46,7 +79,8 @@ export default {
   data () {
     return {
       audioDownload: true,
-      audioPlay: false
+      audioPlay: false,
+      ph: ''
     }
   },
 
@@ -61,6 +95,18 @@ export default {
 
 <style scoped>
 
+.q-chat {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  width: 292px;
+  height: 63px;
+  border-radius: 10px 10px 0px 10px;
+  color: #1e1e1e;
+  padding: 5px;
+}
+
 .btn {
   background: #0055ff;
   border-radius: 8px;
@@ -70,5 +116,16 @@ export default {
 
 .text {
   font-size: 12px;
+}
+
+.text-footer {
+  font-size: 10px;
+}
+
+.background-img {
+  width: 50px;
+  height: 50px;
+  background: #20B46D;
+  border-radius: 10px;
 }
 </style>
