@@ -23,7 +23,7 @@
     </div>
 
     <div class="flex items-center space-x-40 mt-2" :class="(ph.length>=50)? 'space-x-80' : '' ">
-      <div class="">{{ mes.time }}</div>
+      <div class="text-footer">{{ mes.time }}</div>
       <div class="">
         <img src="../../../assets/icon/Unseen-icon.svg">
       </div>
@@ -109,5 +109,8 @@ export default {
 .download{
   position: absolute;
   bottom: 430px;
+}
+.text-footer {
+  font-size: 10px;
 }
 </style>

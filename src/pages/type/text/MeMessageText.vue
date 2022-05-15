@@ -2,7 +2,7 @@
   <div class="">
     <div class="flex items-center space-x-5">
 
-      <div class="q-chat bg-blue-200" :style="(ph.length>=50)? 'height:80px;width:360px;padding:7px' : '' ">
+      <div class="q-chat bg-blue-200">
         <div class="">
           <div class="">
             {{mes.text}}
@@ -11,8 +11,8 @@
       </div>
     </div>
 
-    <div class="flex items-center space-x-60" :class="(ph.length>=50)? 'space-x-80' : '' ">
-      <div class="">{{ mes.time }}</div>
+    <div class="flex items-center space-x-60">
+      <div class="text-footer">{{ mes.time }}</div>
       <div class="">
         <img src="../../../assets/icon/Unseen-icon.svg">
       </div>
@@ -74,5 +74,8 @@ export default {
   border-radius: 10px 10px 10px 0px;
   color: #1e1e1e;
   padding: 5px;
+}
+.text-footer {
+  font-size: 10px;
 }
 </style>
